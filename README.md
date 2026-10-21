@@ -15,6 +15,10 @@ Entry for the [UNA App Development Competition – October 2026](https://unawatc
 
 ---
 
+**Ready-made build:** [`Release/SevenMinute_1.0.0.uapp`](Release/SevenMinute_1.0.0.uapp)
+(for sideloading by USB) and [`Release/SevenMinute_1.0.0_store.zip`](Release/SevenMinute_1.0.0_store.zip)
+(the community-store upload package).
+
 ## The workout
 
 12 body-weight exercises, **30 s of work** each, **10 s transitions**. The order
@@ -176,7 +180,7 @@ The engine tests cover:
    name it *7-Minute* and generate an **App ID**.
 2. Put that ID in `APP_ID` in `Software/Apps/SevenMinute-CMake/CMakeLists.txt`
    (it currently holds a locally generated placeholder).
-3. Tag a version (`git tag v1.0.0`) and run `UNA_SDK=... Tools/package.sh`. This
+3. Set `BUILD_VERSION` in the same file (1.0.0 now) and run `UNA_SDK=... Tools/package.sh`. This
    builds and writes `Output/SevenMinute_<version>_store.zip` (`.uapp`,
    `app-manifest.json`, icon and preview screenshots).
 4. On the app page: **Version → Upload New** → upload the zip → **Release** →

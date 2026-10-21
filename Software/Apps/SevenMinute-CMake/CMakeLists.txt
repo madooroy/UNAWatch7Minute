@@ -18,6 +18,7 @@ set(DEV_ID "UNA")
 # Replace with the App ID generated for this app at https://apps.unawatch.com
 # before publishing to the community app store (see README).
 set(APP_ID "89F73577811516AE")
+set(BUILD_VERSION "1.0.0")        # app version shown in the store; bump per release
 set(RESOURCES_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../Resources")
 set(OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../Output")
 set(LIBS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../Libs")
