@@ -15,6 +15,9 @@ Entry for the [UNA App Development Competition – October 2026](https://unawatc
 
 ---
 
+**Demo video (1 min, with sound):** [`Docs/SevenMinute_demo.mp4`](Docs/SevenMinute_demo.mp4),
+the start and the end of a real round in the simulator, with the beeps.
+
 **Ready-made build:** [`Release/SevenMinute_1.0.0.uapp`](Release/SevenMinute_1.0.0.uapp)
 (for sideloading by USB) and [`Release/SevenMinute_1.0.0_store.zip`](Release/SevenMinute_1.0.0_store.zip)
 (the community-store upload package).
@@ -172,6 +175,9 @@ The engine tests cover:
 - `Tools/sim_fullrun.sh` runs a complete, unskipped workout in the simulator
   and checks every logged cue against the protocol.
 - `Tools/sim_tour.sh` drives every screen and saves screenshots.
+- `Tools/sim_video.sh OUTDIR` records a whole round, and
+  `Tools/make_video.py OUTDIR` cuts it into the demo video, with the beeps
+  rebuilt from the simulator's log.
 - `Tools/roundify.py` masks the screenshots to the round face.
 
 ## Publishing (competition entry)
