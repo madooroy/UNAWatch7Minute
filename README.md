@@ -188,7 +188,9 @@ The engine tests cover:
    (it now holds the store App ID, `4EF4E84F659F9609`).
 3. Set `BUILD_VERSION` in the same file (1.0.0 now) and run `UNA_SDK=... Tools/package.sh`. This
    builds and writes `Output/SevenMinute_<version>_store.zip` (copy it to `Release/`) (`.uapp`,
-   `app-manifest.json`, icon and preview screenshots).
+   `app-manifest.json` and icon; the store accepts nothing else in the zip or the
+   manifest). Paste the description and add the screenshots from
+   `Docs/screenshots/store_*.png` on the app's page in the portal.
 4. On the app page: **Version → Upload New** → upload the zip → **Release** →
    **Confirm and Publish**.
 5. Submit the entry through the competition's [Google Form](https://forms.gle/MTWZYWsVgB6UvrxA7)
