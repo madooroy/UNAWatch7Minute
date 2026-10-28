@@ -29,6 +29,7 @@ cat > "$STAGE/app-manifest.json" <<JSON
   "appVersion": "$VERSION",
   "minKernelVersion": "1.4.0",
   "requiredHardware": [],
+  "description": "The scientific 7-minute workout (Klika & Jordan, 2013) on your wrist: 12 body-weight exercises, 30 s each with 10 s transitions, guided by distinct beeps and buzzes so you never need to look at the watch. A 3-2-1 countdown, a long GO, a falling REST, a triple chirp to switch sides on the side plank, and a fanfare at the finish. 1-3 rounds, beep, buzz or both, live heart rate, pause, skip and a workout summary.",
   "stravaExport": false,
   "id": "$APP_ID",
   "supportsLaps": false,
@@ -42,18 +43,21 @@ cat > "$STAGE/app-manifest.json" <<JSON
 }
 JSON
 python3 "$UNA_SDK/Utilities/Scripts/app_packer/min_kernel_version.py" --stamp "$STAGE/app-manifest.json"
-# The store rejects any manifest key it does not know ("must NOT have
-# additional properties"). Keep to the keys of the SDK's own sample manifests;
-# the description and screenshots are entered on the app's page in the portal.
+# Checked against the store's own errors (Oct 2026): it requires
+# manifest_version, minKernelVersion and description, and rejects any key it
+# does not know, including the "previews" the SDK docs show. Screenshots are
+# added on the app's page in the portal.
 python3 - "$STAGE/app-manifest.json" <<'PY'
 import json, sys
 allowed = {"manifest_version", "type", "name", "icon", "binary", "appVersion", "minKernelVersion",
-           "requiredHardware", "stravaExport", "id", "supportsLaps", "supportsDistance",
+           "requiredHardware", "description", "stravaExport", "id", "supportsLaps", "supportsDistance",
            "supportsTrack", "supportsHeartbeat", "supportsElevation", "supportsStep",
            "supportsSpeed", "customMeasures", "configFields", "configFile"}
-extra = sorted(set(json.load(open(sys.argv[1]))) - allowed)
-if extra:
-    sys.exit(f"app-manifest.json has keys the store rejects: {extra}")
+required = {"manifest_version", "minKernelVersion", "description"}
+m = json.load(open(sys.argv[1]))
+extra, missing = sorted(set(m) - allowed), sorted(required - set(m))
+if extra or missing:
+    sys.exit(f"app-manifest.json: the store rejects {extra} and requires {missing}")
 PY
 
 ZIP="$ROOT/Output/SevenMinute_${VERSION}_store.zip"
