@@ -185,9 +185,9 @@ The engine tests cover:
 1. Sign up at [apps.unawatch.com](https://apps.unawatch.com), click **Add New**,
    name it *7-Minute* and generate an **App ID**.
 2. Put that ID in `APP_ID` in `Software/Apps/SevenMinute-CMake/CMakeLists.txt`
-   (it currently holds a locally generated placeholder).
+   (it now holds the store App ID, `4EF4E84F659F9609`).
 3. Set `BUILD_VERSION` in the same file (1.0.0 now) and run `UNA_SDK=... Tools/package.sh`. This
-   builds and writes `Output/SevenMinute_<version>_store.zip` (`.uapp`,
+   builds and writes `Output/SevenMinute_<version>_store.zip` (copy it to `Release/`) (`.uapp`,
    `app-manifest.json`, icon and preview screenshots).
 4. On the app page: **Version → Upload New** → upload the zip → **Release** →
    **Confirm and Publish**.
